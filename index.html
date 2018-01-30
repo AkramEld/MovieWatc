@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Tv Series Checker</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel = "stylesheet" href="main.css">
+  <script src="jquery-ui.js"></script>
+</head>
+
+<body style="size:1040px;height:1200px;background:url('photo.jpg') no-repeat; background-size: cover" >
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: black;">
+    <div class="container">
+      <img IMG HEIGHT="55" WIDTH="55"  src="tvicon.png" alt="..." class="img-thumbnail" id="icon">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="help.html">How it works</a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="height:100px; text-align:center; margin-top: 90px;">
+    <h1><b><font face="verdana">Check Your Watch Time</b></h1></font>
+  </div>
+  <div class="container rounded-top" style="background-color:lightgrey; height:1000px; background-color: rgba(0,0,0,0.4);">
+    <p1><font color="white">TV-Show</p1></font>
+  <form id="form1">
+    <div class="form-group">
+      <label for="exampleFormControlInput1"></label>
+      <input class="form-control" placeholder="Enter name of TV show here" name="tvshow" id="tvshow">
+    </div>
+    <!-- <ul class="list-group" id="result"></ul> -->
+    <div class="form-group">
+      <label for="exampleFormControlSelect2"><font color="white">Number of seasons watched</label></font>
+      <select class="form-control form-control-sm" name="seasons">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+      </select>
+    </div>
+  </form>
+    <div align="center">
+      <button id = 'addButton' type="button" class="btn btn-dark" onclick="apiCall()" data-toggle="" data-target="">Add</button>
+
+    </div>
+
+  </br></br>
+<div class = "row">
+    <div class = "col" align = "right" >
+    <p id="list" ></p>
+
+  </div>
+  <div class = "col" >
+    <div >
+
+    <div >
+
+    <p id="seriesmin">  </p>
+
+    </div>
+
+
+    <div>
+    <p id="total"><font color="white"> </p></font>
+
+    </div>
+  </div>
+
+</div>
+
+  <div class = "col" >
+    <img id="pic" src="http://www.gameiva.com/images/no_image_available_300x300.jpg" height="300px" width="200px" style="border-radius:5%; display:none" />
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Could not find show</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Please make sure that you are entering the name of the show correctly
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+      <div class="footer">
+        <div class="text">
+              <p text-align="left">Created by:  &emsp; &emsp; &emsp;&emsp;&emsp;&emsp;<a href="https:www.akrameldamaty.com">Akram Eldamaty</a>&emsp;<a href="https://github.com/AkramEld"><i class="fa fa-github" aria-hidden="true"></i></a> &emsp;  ||  &emsp;<a href="http://abdulelrahwan.github.io"> Abdul Elrahwan </a>  &emsp;<a href="https://github.com/abdulelrahwan"><i class="fa fa-github" aria-hidden="true"></i></a></p>
+        </div>
+
+  </div>
+  <script src="https://use.fontawesome.com/76bc3acc89.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"</script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+  <script src="main.js"></script>
+  <script src="jquery-ui.js"></script>
+
+  <script>
+$( function() {
+  var availableTags = [
+   "American Horror Story",
+   "American Idol",
+   "American Ninja Warrior",
+   "American Odyssey",
+   "American Pickers",
+   "American Restoration",
+   "Ancient Aliens",
+   "Anger Management",
+   "Another Period",
+   "Antiques Roadshow UK",
+   "Aquarius",
+   "Archer",
+   "Planet Earth II",
+   "Band of Brothers",
+   "Planet Earth ",
+   "Game of Thrones",
+   "Breaking Bad",
+   "The Wire",
+   "Rick and Morty",
+   "Cosmos: A Spacetime Odyssey",
+   "Cosmos",
+   "The World at War",
+   "The Sopranos",
+   "Life",
+   "Avatar: The Last Airbender",
+   "Sherlock",
+   "The Civil War",
+   "Human Planet",
+   "The Twilight Zone",
+   "Dekalog",
+   "Firefly",
+   "True Detective",
+   "Last Week Tonight with John Oliver",
+   "Fullmetal Alchemist: Brotherhood",
+   "Fargo",
+   "Batman: The Animated Series",
+   "Death Note",
+   "The Blue Planet",
+   "One Punch Man",
+   "Das Boot",
+   "Frozen Planet",
+   "Monty Python's Flying Circus",
+   "Cowboy Bebop",
+   "Africa",
+   "Stranger Things",
+    "Pride and Prejudice",
+    "Black Mirror",
+    "Westworld",
+    "House of Cards",
+    "Arrested Development",
+    "Friends",
+    "Seinfeld",
+    "Only Fools and Horses",
+    "TVF Pitchers",
+    "Over the Garden Wall",
+    "Twin Peaks",
+    "Narcos",
+    "I, Claudius",
+    "Freaks and Geeks",
+    "Gravity Falls",
+    "Fawlty Towers",
+    "Blackadder Goes Forth",
+    "Rome",                    //new from here down fml
+    "Oz",
+    "The Punisher",
+    "The Simpsons",
+    "The Marvelous Mrs. Maisel",//ima delete some and see where the error ends
+    "The Office",
+    "Peaky Blinders",
+    "South Park",
+    "Attack on Titan",
+    "It's Always Sunny in Philadelphia",
+    "The West Wing",
+    "The Jinx: The Life and Deaths of Robert Durst",
+    "House",
+    "The Return of Sherlock Holmes",
+    "The Adventures of Sherlock Holmes",
+    "Nathan for You",
+    "Dragon Ball Z",
+    "Chappelle's Show",
+    "Chappelle's Show",
+    "Chappelle's Show",
+    "Six Feet Under",
+    "Dragon Ball Z",
+    "Dark",
+    "The Crown",
+    "Deadwood",
+    "This Is Us",
+    "Curb Your Enthusiasm",
+    "Archer",
+    "The Thick of It",
+    "Top Gear",
+    "Battlestar Galactica",
+    "From the Earth to the Moon",
+    "Better Call Saul",
+    "Making a Murderer",
+    "Dexter",
+    "The X Files",
+    "Long Way Round",
+    "The Shield",
+    "North & South",
+    "The Grand Tour",
+    "Black-Adder II",
+    "Daredevil",
+    "Shame",
+    "Shameless",
+    "Downton Abbey",
+    "Black Adder the Third",
+    "Doctor Who",
+    "Code Geass: Lelouch of the Rebellion",
+    "Samurai X: Trust and Betrayal",
+    "Spaced",
+    "QI",
+    "Monster",
+    "Fullmetal Alchemist",
+    "Mystery Science Theater 3000",
+    "Mindhunter",
+    "Young Justice",
+    "The Untold History of the United States",
+    "Battlestar Galactica",
+    "Star Trek: The Next Generation",
+    "Through the Wormhole",
+    "Horace and Pete",
+    "Parks and Recreation",
+    "Brass Eye",
+    "Berserk",
+    "Brideshead Revisited",
+    "Mad Men",
+    "The Bugs Bunny Show",
+    "Yes Minister",
+    "Hunter x Hunter",
+    "Leyla and Mecnun",
+    "The Bridge",
+    "Chef's Table",
+    "Friday Night Lights",
+    "Gomorrah",
+    "Generation Kill",
+    "Father Ted",
+    "Louie",
+    "Justice League",
+    "Yes, Prime Minister",
+    "Flight of the Conchords",
+    "Saint Seiya",
+    "Big Little Lies",
+    "The Daily Show",
+    "The Night Of",
+    "Neon Genesis Evangelion",
+    "Justified",
+    "Peep Show",
+    "Samurai Champloo",
+    "John Adams",
+    "The Handmaid's Tale",
+    "Adventure Time",
+    "The Newsroom",
+    "Homicide: Life on the Street",
+    "The Eric Andre Show",
+    "Impractical Jokers",
+    "Boardwalk Empire",
+    "Alfred Hitchcock Presents",
+    "Agatha Christie's Poirot",
+    "Coupling",
+    "Dr. Horrible's Sing-Along Blog",
+    "Dragon Ball",
+    "The Office UK",
+    "Twin Peaks",
+    "Mr. Robot",
+    "House of Cards UK",
+    "Tinker Tailor Soldier Spy",
+    "Whose Line Is It Anyway?",
+    "The IT Crowd",
+    "Feud",
+    "The New Batman Adventures",
+    "Silicon Valley",
+    "Rurôni Kenshin -Meiji kenkaku romantan",
+    "The Prisoner",
+    "Spartacus: Gods of the Arena",
+    "Mr. Bean",
+    "Luther",
+    "American Crime Story",
+    "Ghost in the Shell: Stand Alone Complex",
+    "Black Books",
+    "Ash vs Evil",
+    "Dead",
+    "Atlanta",
+    "Hannibal",
+    "The Colbert Report",
+    "The Venture Bros.",
+    "I'm Alan Partridge",
+    "The Legend of Korra",
+    "Futurama",
+    "Taboo",
+    "Sons of Anarchy",
+    "Wentworth",
+    "Jesus of Nazareth",
+    "Suits",
+    "Erased",
+    "Spartacus: Blood and Sand",
+    "Detectorists",
+    "The Knick",
+    "One Piece",
+    "Kardes Payi",
+    "Behzat Ç.: Bir Ankara Polisiyesi",
+    "The Angry Video Game Nerd",
+    "Endeavour",
+    "Sarabhai vs Sarabhai",
+    "Community",
+    "X-Men",
+    "Police Squad!",
+    "Inside Look: The People v. O.J. Simpson, American Crime Story",
+    "Garth Marenghi's Darkplace",
+    "Carnivàle",
+    "Scenes from a Marriage",
+    "Clannad: After Story",
+    "Unsere Mütter, unsere Väter",
+    "Happy Valley",
+    "Line of Duty",
+    "Samurai Jack",
+    "Permanent Roommates",
+    "State of Play",
+    "El Chavo del Ocho",
+    "Modern Family",
+    "Utopia",
+    "The End of the F***ing World",
+    "Entourage",
+    "Doctor Who",
+    "BoJack Horseman",
+    "BorgenThe Muppet Show",
+    "Legion",
+    "Jeeves and Wooster",
+    "Isler Güçler",
+    "Godless",
+    "Sweet Life",
+    "Roots",
+    "Mushi-Shi",
+    "Parasyte: The Maxim",
+    "Trollhunters",
+    "Southland",
+    "The Larry Sanders Show",
+    "Red Dwarf",
+    "The Kingdom",
+    "Mr. Show with Bob and David",
+    "Supernatural",
+    "Fringe",
+    "Trailer Park Boys",
+    "Dragon Ball Z Kai",
+    "Yu Yu Hakusho: Ghost Files",
+    "Naruto: Shippûden",
+    "Anne",
+    "The League of Gentlemen",
+    "Broadchurch",
+    "My Hero Academia",
+    "Billions",
+    "Person of Interest",
+    "The Inbetweeners",
+    "I Love Lucy",
+    "Star Trek",
+    "Banshee",
+    "Stargate SG-1",
+    "Anne of Green Gables",
+    "Lost",
+    "The Big Bang Theory",
+    "Fresh off The Boat",
+    "The Flash",
+    "NCIS",
+    "The Gifted Agents of S.H.I.E.L.D.",
+    "Riverdale",
+    "Criminal Minds",
+    "Arrow",
+    "Runaways",
+    "McMafia",
+    "The 100",
+    "Gotham"
+  ];
+  $( "#tvshow" ).autocomplete({
+    source: availableTags
+  });
+} );
+  </script>
+</body>
